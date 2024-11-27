@@ -1,0 +1,5 @@
+{
+  "Host": {
+    "CORS": "https://portal.azure.com,https://best-geek.github.io"
+  }
+}
