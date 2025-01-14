@@ -11,7 +11,7 @@
                 "type": "httpTrigger",
                 "name": "req",
                 "authLevel": "FUNCTION",
-                "route": "MakeJoby"
+                "route": "MakeJob"
             },
             {
                 "direction": "OUT",
