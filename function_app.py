@@ -252,37 +252,4 @@ def test_function(req: func.HttpRequest) -> func.HttpResponse:
         status_code=result_code
         )
 
-## If we are running interactively
-if __name__ == "__main__":
-    
-    # take some sample data and an enrichment job 
 
-    with open("payload.json", "r") as f:
-        SAMPLE_SENTINEL_INC = json.load(f)
-
-    SAMPLE_SENTINEL_INC = SAMPLE_SENTINEL_INC["body"]
-
-
-
-    SAMPLE_ENRICH_JOB_DETAILS = {
-    "item-type": "SOAR-trigger",
-    "entity-type": "url",
-    "query": "let LookFor = \"%ENTITY%\";\nSignInLogs | where UserPricipalName == LookFor",
-    "additional_params": {
-        "severity_change": [
-            {
-                "results_count_mt": 1,
-                "severity": "Informational"
-            }
-        ]
-    }
-}
-    
-    AZ_FUNC_PAYLOAD = {"enrichment_job":SAMPLE_ENRICH_JOB_DETAILS, "sentinel_incident":SAMPLE_SENTINEL_INC}
-    with open("az_func_payload.json", "w") as f:
-        json.dump(AZ_FUNC_PAYLOAD, f)
-    print("Sample AZ function payload dumped to 'az_func_payload.json'")
-
-    resp, result_code  = main_funct({ 'sentinel_incident':SAMPLE_SENTINEL_INC, 'enrichment_job': SAMPLE_ENRICH_JOB_DETAILS } )
-    print(f"Would have returned result code: {result_code} ")
-    pp.pprint(resp)
