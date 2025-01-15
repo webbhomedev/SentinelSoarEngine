@@ -1,32 +1,4 @@
-"""
-Base Python for an Azure Function which will manipulate provided data to generate a series
-Queries should then be passed back to Sentinel
-
-Two key pieces of information are required: the Sentinel incident and a specially crafted
-job payload. 
-
-As of writing, job payloads should look something like this and are fairly self explanatory
-    SAMPLE_ENRICH_JOB_DETAILS = {
-        "item-type": "SOAR-trigger",
-        "entity-type": "Account",
-        "query": 'SigninLogs | where UserPrincipalName == \"%ENTITY%\"',
-        "additional_params": {"severity_change": {"results_count_mt": 1, "severity": "High"}},
-    }
-
-Sample JSON data is not provided, however, this can be taken directly from a logic app run (take the outputs
-of Sentinel incident creation)
-and then dumped in payload.json
-
-"""
-
-import json
-import pprint as pp
 import copy
-import azure.functions as func
-import logging
-
-app = func.FunctionApp(http_auth_level=func.AuthLevel.FUNCTION)
-
 
 def validateJobisJob(job) -> bool:
     """Checks to see if the specially crafted job is valid with a series of 'if' checks
@@ -147,7 +119,7 @@ def generateCustomEntitiesList(entities) -> list:
     return custom_entities_list
 
 
-def main_funct(payload={}):
+def main_make_job(payload={}):
         
     # set default global configuration
     REWRITE_QUERIES = True
@@ -229,27 +201,3 @@ def main_funct(payload={}):
     # if we have made it this far without an early return, as
     RETURN_PAYLOAD["status"] = "0:ok"
     return RETURN_PAYLOAD, 200
-
-
-## If we are in AZ
-@app.function_name(name="MakeJob")
-@app.route(route="MakeJob")
-def test_function(req: func.HttpRequest) -> func.HttpResponse:
-    logging.info('Python HTTP trigger function processed a request.')
-    
-    try:
-        req_body = json.loads(req.get_body())
-    except :
-        return func.HttpResponse("Missing JSON payload", 500)
-
-    sentinel_incident = req_body.get("sentinel_incident", {})
-    enrichment_job = req_body.get("enrichment_job", {})
-
-    resp, result_code  = main_funct({ 'sentinel_incident':sentinel_incident, 'enrichment_job': enrichment_job } )
-
-    return func.HttpResponse(
-        json.dumps(resp),
-        status_code=result_code
-        )
-
-

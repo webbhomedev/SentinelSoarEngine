@@ -2,7 +2,7 @@
     "data": {
         "name": "MakeJob",
         "entryPoint": "MakeJob",
-        "scriptFile": "make_job.py",
+        "scriptFile": "function_app.py",
         "language": "python",
         "functionDirectory": "/home/site/wwwroot",
         "bindings": [
@@ -12,6 +12,13 @@
                 "name": "req",
                 "authLevel": "FUNCTION",
                 "route": "MakeJob"
+            },
+            {
+                "direction": "IN",
+                "type": "httpTrigger",
+                "name": "req",
+                "authLevel": "FUNCTION",
+                "route": "MakeLaShareUrl"
             },
             {
                 "direction": "OUT",
