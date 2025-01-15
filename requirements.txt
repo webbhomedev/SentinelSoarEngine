@@ -1,1 +1,4 @@
 azure-functions
+gzip
+base64
+datetime

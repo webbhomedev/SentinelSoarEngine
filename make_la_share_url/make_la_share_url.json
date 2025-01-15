@@ -1,8 +1,8 @@
 {
     "data": {
-        "name": "HttpTrigger1",
-        "entryPoint": "MakeJob",
-        "scriptFile": "function_app.py",
+        "name": "MakeLaShareUrl",
+        "entryPoint": "MakeLaShareUrl",
+        "scriptFile": "make_la_share_url.py",
         "language": "python",
         "functionDirectory": "/home/site/wwwroot",
         "bindings": [
@@ -11,7 +11,7 @@
                 "type": "httpTrigger",
                 "name": "req",
                 "authLevel": "FUNCTION",
-                "route": "MakeJoby"
+                "route": "MakeLaShareUrl"
             },
             {
                 "direction": "OUT",
