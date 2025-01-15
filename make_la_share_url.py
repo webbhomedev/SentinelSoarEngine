@@ -53,7 +53,7 @@ def make_share_url(query:str='', subscription_id:str='', resource_group:str='', 
          f"q/{encoded}")
     
     if timespan:
-        base_url + f"/timespan/{timespan}"
+        base_url += f"/timespan/{timespan}"
     
     return 0, base_url
 
