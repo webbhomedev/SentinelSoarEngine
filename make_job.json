@@ -1,8 +1,8 @@
 {
     "data": {
-        "name": "HttpTrigger1",
+        "name": "MakeJob",
         "entryPoint": "MakeJob",
-        "scriptFile": "function_app.py",
+        "scriptFile": "make_job.py",
         "language": "python",
         "functionDirectory": "/home/site/wwwroot",
         "bindings": [
