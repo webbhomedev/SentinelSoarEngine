@@ -52,28 +52,28 @@ class TestMakeJob(unittest.TestCase):
     def testGenerateJob(self):
         import json
         import pprint as pp
-        from make_job import main_funct
+        from make_job import main_make_job
         
         sample_job = self.makeSampleJob()
 
-        resp, result_code  = main_funct(sample_job)
+        resp, result_code  = main_make_job(sample_job)
         pp.pprint(resp)
         
         self.assertTrue(result_code >= 200 and result_code < 300, 'Returned non 200 result code')
 
     def testNoWarningsResp(self):
-        from make_job import main_funct
+        from make_job import main_make_job
         
         sample_job = self.makeSampleJob()
-        resp, result_code  = main_funct(sample_job)
+        resp, result_code  = main_make_job(sample_job)
         
         self.assertFalse(resp['warnings'])
         
     def testNoErrors(self):
-        from make_job import main_funct
+        from make_job import main_make_job
         
         sample_job = self.makeSampleJob()
-        resp, result_code  = main_funct(sample_job)
+        resp, result_code  = main_make_job(sample_job)
         
         self.assertFalse(resp['errors'])
         
