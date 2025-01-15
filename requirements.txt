@@ -1,3 +1,1 @@
 azure-functions
-base64
-datetime
