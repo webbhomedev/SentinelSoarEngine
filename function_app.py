@@ -87,9 +87,9 @@ def make_url(req: func.HttpRequest) -> func.HttpResponse:
         resp_body['errors'] = resp
         http_status = 500
     else:
-        resp['share_url'] = resp
+        resp_body['share_url'] = resp
         
     return func.HttpResponse(
-        json.dumps(resp),
+        json.dumps(resp_body),
         status_code=http_status
         )
