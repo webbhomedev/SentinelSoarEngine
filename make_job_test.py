@@ -1,6 +1,6 @@
 import unittest
 import os
-from function_app import *
+from make_job.function_app import *
 
 class TestMakeJob(unittest.TestCase):
     def setUp(self):
@@ -52,7 +52,7 @@ class TestMakeJob(unittest.TestCase):
     def testGenerateJob(self):
         import json
         import pprint as pp
-        from function_app import main_funct
+        from make_job.function_app import main_funct
         
         sample_job = self.makeSampleJob()
 
@@ -62,7 +62,7 @@ class TestMakeJob(unittest.TestCase):
         self.assertTrue(result_code >= 200 and result_code < 300, 'Returned non 200 result code')
 
     def testNoWarningsResp(self):
-        from function_app import main_funct
+        from make_job.function_app import main_funct
         
         sample_job = self.makeSampleJob()
         resp, result_code  = main_funct(sample_job)
@@ -70,7 +70,7 @@ class TestMakeJob(unittest.TestCase):
         self.assertFalse(resp['warnings'])
         
     def testNoErrors(self):
-        from function_app import main_funct
+        from make_job.function_app import main_funct
         
         sample_job = self.makeSampleJob()
         resp, result_code  = main_funct(sample_job)

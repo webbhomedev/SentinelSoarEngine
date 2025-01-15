@@ -1,0 +1,23 @@
+{
+    "data": {
+        "name": "HttpTrigger1",
+        "entryPoint": "MakeJob",
+        "scriptFile": "function_app.py",
+        "language": "python",
+        "functionDirectory": "/home/site/wwwroot",
+        "bindings": [
+            {
+                "direction": "IN",
+                "type": "httpTrigger",
+                "name": "req",
+                "authLevel": "FUNCTION",
+                "route": "MakeJob"
+            },
+            {
+                "direction": "OUT",
+                "type": "http",
+                "name": "$return"
+            }
+        ]
+    }
+}

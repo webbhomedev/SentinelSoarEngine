@@ -1,0 +1,23 @@
+{
+    "data": {
+        "name": "MakeLaShareUrl",
+        "entryPoint": "MakeLaShareUrl",
+        "scriptFile": "make_la_share_url.py",
+        "language": "python",
+        "functionDirectory": "/home/site/wwwroot",
+        "bindings": [
+            {
+                "direction": "IN",
+                "type": "httpTrigger",
+                "name": "req",
+                "authLevel": "FUNCTION",
+                "route": "MakeLaShareUrl"
+            },
+            {
+                "direction": "OUT",
+                "type": "http",
+                "name": "$return"
+            }
+        ]
+    }
+}
