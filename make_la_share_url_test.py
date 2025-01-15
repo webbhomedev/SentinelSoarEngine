@@ -1,5 +1,5 @@
 import unittest
-from make_la_share_url.make_la_share_url import make_share_url
+from make_la_share_url import make_share_url
 import pprint as pp
 
 class TestMakeJob(unittest.TestCase):
